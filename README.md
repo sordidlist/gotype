@@ -1,4 +1,4 @@
-# LearnAllTheLangs
+# gotype
 
 ### A Go-based tool to help users who are proficient at typing in one language to more quickly develop typing proficiency in other languages.
 
