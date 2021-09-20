@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"learn-all-the-langs/configure"
-	"learn-all-the-langs/target-language-keyboard-maps"
-	"learn-all-the-langs/views"
+	"gotype/configure"
+	"gotype/target-language-keyboard-maps"
 )
 
 // Look for user configs, load if they don't exist
@@ -26,11 +25,22 @@ import (
 // User selects a challenge
 // Play the challenge
 
+type keyboardMap interface {
+	GetUppercaseAndLowercaseKeyboardMaps() (map[string]string, map[string]string)
+}
+
 func main() {
 	configure.GetInitialConfigs()
-	views.ShowMainMenu()
+	ShowMainMenu()
 	ar := target_language_keyboard_maps.ArabicKeyboardMapType{}
-	arMapUpper, arMapLower := ar.GetUppercaseAndLowercaseKeyboardMaps()
-	fmt.Printf(arMapUpper["E"])
-	fmt.Printf(arMapLower["u"])
+
+	ru := target_language_keyboard_maps.RussianKeyboardMapType{}
+
+	printKeyboardMap(ar)
+	printKeyboardMap(ru)
+}
+
+func printKeyboardMap(k keyboardMap) {
+	kbmapU, kbmapL := k.GetUppercaseAndLowercaseKeyboardMaps()
+	fmt.Println(kbmapU, kbmapL)
 }

@@ -1,4 +1,4 @@
-module learn-all-the-langs
+module gotype
 
 go 1.15
 

@@ -1,8 +1,8 @@
 package target_language_keyboard_maps
 
-type russianKeyboardMapType struct{}
+type RussianKeyboardMapType struct{}
 
-func (russianKeyboardMap russianKeyboardMapType) getUppercaseAndLowercaseKeyboardMaps() (map[string]string, map[string]string) {
+func (russianKeyboardMap RussianKeyboardMapType) GetUppercaseAndLowercaseKeyboardMaps() (map[string]string, map[string]string) {
 	russianMapLowercase := map[string]string{
 		"q": "й",
 		"w": "ц",
