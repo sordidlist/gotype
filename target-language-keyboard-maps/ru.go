@@ -1,33 +1,65 @@
 package target_language_keyboard_maps
 
+import "unicode"
+
 type RussianKeyboardMapType struct{}
 
-func (russianKeyboardMap RussianKeyboardMapType) GetUppercaseAndLowercaseKeyboardMaps() (map[string]string, map[string]string) {
-	russianMapLowercase := map[string]string{
-		"q": "й",
-		"w": "ц",
-		"e": "у",
-		"r": "к",
-		"t": "е",
-		"y": "н",
-		"u": "г",
-		"i": "ш",
-		"o": "щ",
-		"p": "з",
-	}
+func (RussianKeyboardMapType) GetLanguageName() string {
+	return "Russian"
+}
 
-	russianMapUppercase := map[string]string{
-		"Q": "Й",
-		"W": "Ц",
-		"E": "У",
-		"R": "К",
-		"T": "Е",
-		"Y": "Н",
-		"U": "Г",
-		"I": "Ш",
-		"O": "Щ",
-		"P": "З",
+func (RussianKeyboardMapType) GetUppercaseKeyboardMap() map[rune]rune {
+	return map[rune]rune{
+		'Q': 'Й',
+		'W': 'ц',
+		'E': 'У',
+		'R': 'К',
+		'T': 'Е',
+		'Y': 'Н',
+		'U': 'Г',
+		'I': 'Ш',
+		'O': 'Щ',
+		'P': 'З',
+		'{': 'Х',
+		'}': 'Ъ',
 	}
+}
 
-	return russianMapUppercase, russianMapLowercase
+func (RussianKeyboardMapType) GetLowercaseKeyboardMap() map[rune]rune {
+	return map[rune]rune{
+		'q': 'й',
+		'w': 'ц',
+		'e': 'у',
+		'r': 'к',
+		't': 'е',
+		'y': 'н',
+		'u': 'г',
+		'i': 'ш',
+		'o': 'щ',
+		'p': 'з',
+		'[': 'х',
+		']': 'ъ',
+	}
+}
+
+func (russianKeyboardMapType RussianKeyboardMapType) GetMapLength() int {
+	return len(russianKeyboardMapType.GetUppercaseKeyboardMap())
+}
+
+func (russianKeyboardMapType RussianKeyboardMapType) GetUppercaseAndLowercaseKeyboardMaps() (map[rune]rune, map[rune]rune) {
+	arabicMapUppercase := russianKeyboardMapType.GetUppercaseKeyboardMap()
+	arabicMapLowercase := russianKeyboardMapType.GetLowercaseKeyboardMap()
+	return arabicMapUppercase, arabicMapLowercase
+}
+
+func (russianKeyboardMapType RussianKeyboardMapType) GetMappedCharacter(inputChar rune) rune {
+	if unicode.IsLower(inputChar) {
+		kbMap := russianKeyboardMapType.GetLowercaseKeyboardMap()
+		mappedChar := kbMap[inputChar]
+		return mappedChar
+	} else {
+		kbMap := russianKeyboardMapType.GetUppercaseKeyboardMap()
+		mappedChar := kbMap[inputChar]
+		return mappedChar
+	}
 }
