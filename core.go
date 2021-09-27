@@ -19,7 +19,18 @@ func populateMultiChars(g *Game) {
 			g.currentCharacters = append(g.currentCharacters, newMultiChar)
 		}
 	}
+	for charIndex := 0; charIndex < len(g.currentCharacters); charIndex++ {
+		currentChar := g.currentCharacters[charIndex]
+		if currentChar.timer > multiCharMaxLifetime {
+			removeMultiChar(g, charIndex)
+		}
+	}
 	g.counter++
+}
+
+func removeMultiChar(g *Game, charIndex int) {
+	g.currentCharacters[charIndex] = g.currentCharacters[len(g.currentCharacters)-1]
+	g.currentCharacters = g.currentCharacters[:len(g.currentCharacters)-1]
 }
 
 func affectAllMultiChars(g *Game) {

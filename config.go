@@ -20,6 +20,8 @@ const (
 const maxStartingHeight int = 20
 const maxFallSpeed int = 6
 
+const multiCharMaxLifetime = 500
+
 const gameTitle = `gotype by sordidlist`
 
 var (
