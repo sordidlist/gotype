@@ -7,7 +7,7 @@ type UserConfig struct {
 }
 
 const (
-	multiCharsPerSecond = 2
+	multiCharsPerSecond = 1
 	gravity             = 1
 )
 

@@ -49,6 +49,14 @@ func updateMultiCharsFromUserInput(g *Game) {
 	}
 }
 
+type keyboardMapCase int8
+
+const (
+	UppercaseKeyboardMap keyboardMapCase = iota
+	LowercaseKeyboardMap
+	NumbersKeyboardMap
+)
+
 func fetchNextMultiChar(g *Game) (MultiChar, error) {
 	var kbMap keyboardMap
 	if g.userConfig.currentLanguage == "Arabic" {
@@ -61,11 +69,14 @@ func fetchNextMultiChar(g *Game) (MultiChar, error) {
 	randomIndex := rand.Intn(kbMap.GetMapLength())
 	count := 0
 	var casedKbMap map[rune]rune
-	upperOrLower := rand.Intn(1)
-	if upperOrLower > 0 {
+	casedKbMode := keyboardMapCase(rand.Intn(3))
+
+	if casedKbMode == UppercaseKeyboardMap {
 		casedKbMap = kbMap.GetUppercaseKeyboardMap()
-	} else {
+	} else if casedKbMode == LowercaseKeyboardMap {
 		casedKbMap = kbMap.GetLowercaseKeyboardMap()
+	} else if casedKbMode == NumbersKeyboardMap {
+		casedKbMap = kbMap.GetShiftNumberRowMap()
 	}
 	for key, value := range casedKbMap {
 		if count == randomIndex {
