@@ -14,6 +14,7 @@ const (
 const (
 	screenWidth  = 1200
 	screenHeight = 1024
+	bufferWidth  = 30
 )
 
 const maxStartingHeight int = 20

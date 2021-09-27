@@ -91,17 +91,34 @@ func fetchNextMultiChar(g *Game) (MultiChar, error) {
 					A: uint8(rand.Intn(255)),
 				},
 				characterDisplayMode: ShowInputChar,
-				xPos:                 rand.Intn(screenWidth),
+				xPos:                 rand.Intn(screenWidth - bufferWidth),
 				yPos:                 50,
 				moveSpeed:            2,
 				timer:                0,
 			}
+			validateNewMultiChar(&randomMultiChar)
 			return randomMultiChar, nil
 		} else {
 			count++
 		}
 	}
 	return MultiChar{}, errors.New("failed to return a new multi char")
+}
+
+func validateNewMultiChar(multiChar *MultiChar) {
+	colorsSum := int(multiChar.textColor.R) + int(multiChar.textColor.G) + int(multiChar.textColor.B)
+	for colorsSum < (255 * 2) {
+		multiChar.textColor = color.RGBA{
+			R: uint8(rand.Intn(255)),
+			G: uint8(rand.Intn(255)),
+			B: uint8(rand.Intn(255)),
+			A: uint8(rand.Intn(255)),
+		}
+		colorsSum = int(multiChar.textColor.R) + int(multiChar.textColor.G) + int(multiChar.textColor.B)
+	}
+	for multiChar.xPos < bufferWidth {
+		multiChar.xPos = rand.Intn(screenWidth - bufferWidth)
+	}
 }
 
 func readRunes(tty *tty.TTY) {

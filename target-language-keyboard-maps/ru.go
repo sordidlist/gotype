@@ -89,10 +89,8 @@ func (RussianKeyboardMapType) GetShiftNumberRowMap() map[rune]rune {
 		'@': '"',
 		'#': '№',
 		'$': ';',
-		'%': '%',
 		'^': ':',
 		'&': '?',
-		'*': '*',
 	}
 }
 
