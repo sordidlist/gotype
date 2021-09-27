@@ -22,6 +22,10 @@ func (arabicKeyboardMap ArabicKeyboardMapType) GetLowercaseKeyboardMap() map[run
 	}
 }
 
+func (ArabicKeyboardMapType) GetShiftNumberRowMap() map[rune]rune {
+	return map[rune]rune{}
+}
+
 func (arabicKeyboardMap ArabicKeyboardMapType) GetUppercaseAndLowercaseKeyboardMaps() (map[rune]rune, map[rune]rune) {
 	arabicMapUppercase := arabicKeyboardMap.GetUppercaseKeyboardMap()
 	arabicMapLowercase := arabicKeyboardMap.GetLowercaseKeyboardMap()
