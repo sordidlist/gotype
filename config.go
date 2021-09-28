@@ -1,6 +1,9 @@
 package main
 
-import "golang.org/x/image/font"
+import (
+	"golang.org/x/image/font"
+	"image/color"
+)
 
 type UserConfig struct {
 	currentLanguage string
@@ -25,6 +28,9 @@ const ARABIC_LANGUAGE = "Arabic"
 const RUSSIAN_LANGUAGE = "Russian"
 
 const multiCharMaxLifetime = 500
+
+var foreignCharacterColor color.RGBA
+var inputCharacterColor color.RGBA
 
 const gameTitle = `gotype by sordidlist`
 

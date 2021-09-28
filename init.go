@@ -32,11 +32,11 @@ func loadOpentypeFont(fontPath string) (font.Face, error) {
 
 // All fonts downloaded from https://fonts.google.com
 func setFonts(config *UserConfig) {
-	//_, err := loadOpentypeFont("assets/ScheherazadeNew-Regular.ttf")
+	//scheherazadeFont, err := loadOpentypeFont("assets/ScheherazadeNew-Regular.ttf")
 	scheherazadeFont, err := loadOpentypeFont("fonts/ScheherazadeNew-Bold.ttf")
-	//_, err := loadOpentypeFont("assets/Amiri-Regular.ttf")
+	//amiriFont, err := loadOpentypeFont("assets/Amiri-Regular.ttf")
 	amiriFont, err := loadOpentypeFont("fonts/Amiri-Bold.ttf")
-	//_, err := loadOpentypeFont("assets/Roboto-Regular.ttf")
+	//robotoFont, err := loadOpentypeFont("assets/Roboto-Regular.ttf")
 	robotoFont, err := loadOpentypeFont("fonts/Roboto-Bold.ttf")
 	if err != nil {
 		log.Fatal(err)

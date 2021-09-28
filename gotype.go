@@ -58,7 +58,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 
 func main() {
 	config := UserConfig{
-		currentLanguage: RUSSIAN_LANGUAGE,
+		currentLanguage: ARABIC_LANGUAGE,
 	}
 	setFonts(&config)
 	go readRunes()

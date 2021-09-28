@@ -117,15 +117,17 @@ func fetchNextMultiChar(g *Game) (MultiChar, error) {
 }
 
 func validateNewMultiChar(multiChar *MultiChar) {
-	colorsSum := int(multiChar.textColor.R) + int(multiChar.textColor.G) + int(multiChar.textColor.B)
-	for colorsSum < (255 * 2) {
+	colorsSum := int(multiChar.textColor.R) + int(multiChar.textColor.G) + int(multiChar.textColor.B) +
+		int(multiChar.textColor.A)
+	for colorsSum < (255 * 3) {
 		multiChar.textColor = color.RGBA{
 			R: uint8(rand.Intn(255)),
 			G: uint8(rand.Intn(255)),
 			B: uint8(rand.Intn(255)),
 			A: uint8(rand.Intn(255)),
 		}
-		colorsSum = int(multiChar.textColor.R) + int(multiChar.textColor.G) + int(multiChar.textColor.B)
+		colorsSum = int(multiChar.textColor.R) + int(multiChar.textColor.G) + int(multiChar.textColor.B) +
+			int(multiChar.textColor.A)
 	}
 	for multiChar.xPos < bufferWidth {
 		multiChar.xPos = rand.Intn(screenWidth - bufferWidth)
