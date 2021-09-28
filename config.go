@@ -16,15 +16,22 @@ const (
 	screenHeight = 1024
 	bufferWidth  = 30
 )
+const dpi = 72
 
 const maxStartingHeight int = 20
 const maxFallSpeed int = 6
+
+const ARABIC_LANGUAGE = "Arabic"
+const RUSSIAN_LANGUAGE = "Russian"
 
 const multiCharMaxLifetime = 500
 
 const gameTitle = `gotype by sordidlist`
 
 var (
-	mplusNormalFont font.Face
-	mplusBigFont    font.Face
+	inputCharacterFont   font.Face
+	foreignCharacterFont font.Face
+	amiriFont            font.Face
+	robotoFont           font.Face
+	scheherazadeFont     font.Face
 )

@@ -70,9 +70,9 @@ const (
 
 func fetchNextMultiChar(g *Game) (MultiChar, error) {
 	var kbMap keyboardMap
-	if g.userConfig.currentLanguage == "Arabic" {
+	if g.userConfig.currentLanguage == ARABIC_LANGUAGE {
 		kbMap = target_language_keyboard_maps.ArabicKeyboardMapType{}
-	} else if g.userConfig.currentLanguage == "Russian" {
+	} else if g.userConfig.currentLanguage == RUSSIAN_LANGUAGE {
 		kbMap = target_language_keyboard_maps.RussianKeyboardMapType{}
 	} else {
 		return MultiChar{}, errors.New("could not load a keyboard map for language: " + g.userConfig.currentLanguage)
@@ -132,9 +132,14 @@ func validateNewMultiChar(multiChar *MultiChar) {
 	}
 }
 
-func readRunes(tty *tty.TTY) {
+func readRunes() {
+	ttyReader, err := tty.Open()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer ttyReader.Close()
 	for {
-		r, err := tty.ReadRune()
+		r, err := ttyReader.ReadRune()
 		if err != nil {
 			log.Fatal(err)
 		}

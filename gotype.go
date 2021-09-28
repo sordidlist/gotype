@@ -3,8 +3,6 @@ package main
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/text"
-	"github.com/mattn/go-tty"
-	"log"
 	"os"
 )
 
@@ -28,7 +26,6 @@ import (
 // Play the challenge
 
 func init() {
-	setFonts()
 	seedRng()
 }
 
@@ -43,13 +40,13 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	for charIndex := 0; charIndex < len(g.currentCharacters); charIndex++ {
 		currentChar := g.currentCharacters[charIndex]
 		if currentChar.characterDisplayMode == ShowInputChar {
-			text.Draw(screen, string(currentChar.inputChar), mplusBigFont,
+			text.Draw(screen, string(currentChar.inputChar), inputCharacterFont,
 				currentChar.xPos, currentChar.yPos, currentChar.textColor)
 		} else if currentChar.characterDisplayMode == ShowForeignChar {
-			text.Draw(screen, string(currentChar.foreignChar), mplusBigFont,
+			text.Draw(screen, string(currentChar.foreignChar), foreignCharacterFont,
 				currentChar.xPos, currentChar.yPos, currentChar.textColor)
 		} else if currentChar.characterDisplayMode == ShowMaskedChar {
-			text.Draw(screen, string(currentChar.maskedChar), mplusNormalFont,
+			text.Draw(screen, string(currentChar.maskedChar), inputCharacterFont,
 				currentChar.xPos, currentChar.yPos, currentChar.textColor)
 		}
 	}
@@ -61,15 +58,10 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 
 func main() {
 	config := UserConfig{
-		currentLanguage: "Russian",
+		currentLanguage: RUSSIAN_LANGUAGE,
 	}
-	tty, err := tty.Open()
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer tty.Close()
-
-	go readRunes(tty)
+	setFonts(&config)
+	go readRunes()
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle(gameTitle + " " + config.currentLanguage)
 	if err := ebiten.RunGame(&Game{
