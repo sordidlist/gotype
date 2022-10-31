@@ -3,7 +3,7 @@ module gotype
 go 1.15
 
 require (
-	github.com/hajimehoshi/ebiten/v2 v2.4.8
+	github.com/hajimehoshi/ebiten/v2 v2.4.9
 	github.com/mattn/go-tty v0.0.4
-	golang.org/x/image v0.0.0-20220722155232-062f8c9fd539
+	golang.org/x/image v0.1.0
 )
