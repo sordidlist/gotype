@@ -11,8 +11,8 @@ github.com/go-text/typesetting-utils v0.0.0-20240317173224-1986cbe96c66/go.mod h
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/hajimehoshi/bitmapfont/v3 v3.2.0 h1:0DISQM/rseKIJhdF29AkhvdzIULqNIIlXAGWit4ez1Q=
 github.com/hajimehoshi/bitmapfont/v3 v3.2.0/go.mod h1:8gLqGatKVu0pwcNCJguW3Igg9WQqVXF0zg/RvrGQWyg=
-github.com/hajimehoshi/ebiten/v2 v2.8.2 h1:cvZ5d3LSVFzvcSZVGjTPyV43DzWzJWbwy1b+2V5zJPI=
-github.com/hajimehoshi/ebiten/v2 v2.8.2/go.mod h1:SXx/whkvpfsavGo6lvZykprerakl+8Uo1X8d2U5aAnA=
+github.com/hajimehoshi/ebiten/v2 v2.8.3 h1:AKHqj3QbQMzNEhK33MMJeRwXm9UzftrUUo6AWwFV258=
+github.com/hajimehoshi/ebiten/v2 v2.8.3/go.mod h1:SXx/whkvpfsavGo6lvZykprerakl+8Uo1X8d2U5aAnA=
 github.com/hajimehoshi/go-mp3 v0.3.4/go.mod h1:fRtZraRFcWb0pu7ok0LqyFhCUrPeMsGRSVop0eemFmo=
 github.com/hajimehoshi/oto/v2 v2.3.1/go.mod h1:seWLbgHH7AyUMYKfKYT9pg7PhUu9/SisyJvNTT+ASQo=
 github.com/jakecoffman/cp v1.2.1/go.mod h1:JjY/Fp6d8E1CHnu74gWNnU0+b9VzEdUVPoJxg2PsTQg=
