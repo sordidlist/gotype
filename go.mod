@@ -1,11 +1,12 @@
 module gotype
 
-go 1.15
+go 1.23.0
+
 toolchain go1.24.1
 
 require (
 	github.com/hajimehoshi/ebiten/v2 v2.8.7
-	github.com/mattn/go-tty v0.0.7
+	github.com/mattn/go-tty v0.0.8
 	golang.org/x/image v0.25.0
 )
 
